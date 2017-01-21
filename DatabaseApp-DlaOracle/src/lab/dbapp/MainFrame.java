@@ -96,7 +96,19 @@ public class MainFrame {
 			public void actionPerformed(ActionEvent e) {
 				switch(WybranaTabelka) {
 				case 0:
-					tabela = new JTable();
+					wykonawca.execute(new Runnable() {
+						public void run() {
+							JTable table = null ;
+							table = new JTable();
+							DefaultTableModel model = (DefaultTableModel) table.getModel();
+							table.setModel(model);
+							
+								scrollPane.setViewportView(table);
+						}	
+					});
+					
+					
+						
 					break;
 				case 1:
 					
