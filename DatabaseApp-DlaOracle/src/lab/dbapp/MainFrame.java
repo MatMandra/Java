@@ -1,7 +1,6 @@
 package lab.dbapp;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -13,17 +12,19 @@ import java.sql.Statement;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-import javax.swing.JEditorPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 public class MainFrame {
@@ -32,7 +33,6 @@ public class MainFrame {
 	private JScrollPane scrollPane;
 	
 	private static final String PROPERTIES_PATH = "db/oracledb.properties";
-	protected static final boolean True = false;
 	private DbParams dbParams = null;
 	private boolean isDbReady = false;
 	
@@ -42,18 +42,7 @@ public class MainFrame {
 	/**
 	 * Launch the application.
 	 */
-	public int WybranaTabelka = -1;
-	public String zmienna1;
-	public String zmiennaA, zmiennaB, zmiennaC,zmiennaD;
-	
-	
-	
-	
-	
-	private JTextField txtNrlekarza;
-	private JTextField txtImieLekarza;
-	private JTextField txtNazwiskoLekarza;
-	private JTextField txtTelefonLekarza;
+	public int WybranaTabelka = 0;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -84,7 +73,7 @@ public class MainFrame {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(-10, 0, 323, 552);
+		panel.setBounds(0, 0, 323, 552);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -92,7 +81,7 @@ public class MainFrame {
 		Wybierz_tab.setToolTipText("Wybierz Tabelę");
 		Wybierz_tab.setMaximumRowCount(9);
 		Wybierz_tab.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		Wybierz_tab.setModel(new DefaultComboBoxModel(new String[] {"Wybierz Tabelę", "Lekarze", "Pacjenci", "Wizyty", "Diagnozy", "Choroby", "Recepty", "Lekarstwa", "Lekarstwo_Leczy", "Interakcję_Leków"}));
+		Wybierz_tab.setModel(new DefaultComboBoxModel(new String[] {"", "Lekarze", "Pacjenci", "Wizyty", "Diagnozy", "Choroby", "Recepty", "Lekarstwa", "Lekarstwo_Leczy", "Interakcję_Leków"}));
 		Wybierz_tab.setSelectedIndex(0);
 		Wybierz_tab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -102,7 +91,7 @@ public class MainFrame {
 			
 
 		});
-		Wybierz_tab.setBounds(12, 35, 157, 45);
+		Wybierz_tab.setBounds(77, 57, 157, 45);
 		panel.add(Wybierz_tab);
 		
 		JButton Szukaj = new JButton("Wyszukaj Dane");
@@ -118,12 +107,11 @@ public class MainFrame {
 							table.setModel(model);
 							
 								scrollPane.setViewportView(table);
+								JOptionPane.showMessageDialog(null, "Wybierz Tabelę");
 						}	
-					});
-					
-					
-						
+					});	
 					break;
+				
 				case 1:
 					
 					wykonawca.execute(new Runnable() {
@@ -222,109 +210,69 @@ public class MainFrame {
 			}
 		});
 		Szukaj.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		Szukaj.setBounds(164, 35, 147, 45);
+		Szukaj.setBounds(12, 134, 147, 45);
 		panel.add(Szukaj);
 		
 		JButton btnDodajDane = new JButton("Dodaj Dane");
+		btnDodajDane.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnDodajDane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				switch(WybranaTabelka) {
 					case 0:
+						JOptionPane.showMessageDialog(null, "Wybierz Tabelę");
 						break;
 					case 1:
 						
+						lekarz lekarz = new lekarz();
+						lekarz.setVisible(true);
+						
 						break;
 					case 2:
+						pacjent pacjent = new pacjent();
+						pacjent.setVisible(true);
 						break;
 					case 3:
+						wizyta wizyta = new wizyta();
+						wizyta.setVisible(true);
 						break;
 					case 4:
+						diagnoza diagnoza = new diagnoza();
+						diagnoza.setVisible(true);
 						break;
 					case 5:
+						choroba choroba = new choroba();
+						choroba.setVisible(true);
 						break;
 					case 6:
+						recepta recepta = new recepta();
+						recepta.setVisible(true);
 						break;
 					case 7:
+						lekarstwo lekarstwo = new lekarstwo();
+						lekarstwo.setVisible(true);
 						break;
-					case 8:
+				/*	case 8:
+						lek_leczy lek_leczy = new lek_leczy  ();
+						lek_leczy.setVisible(true);
 						break;
 					case 9:
+						inter_leku inter_leku = new inter_leku();
+						inter_leku.setVisible(true);
 						break;
-				
+				*/
 				}
 			}
 		});
-		btnDodajDane.setBounds(171, 92, 140, 45);
+
+		btnDodajDane.setBounds(164, 134, 147, 45);
 		panel.add(btnDodajDane);
 		
-				JInternalFrame FrameLekarz = new JInternalFrame("Dodaj Lekarza");
-				FrameLekarz.setBounds(12, 209, 284, 276);
-				panel.add(FrameLekarz);
-				FrameLekarz.setClosable(true);
-				FrameLekarz.getContentPane().setEnabled(false);
-				FrameLekarz.setEnabled(false);
-				FrameLekarz.getContentPane().setLayout(null);
-				
-				txtNrlekarza = new JTextField();
-				txtNrlekarza.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						zmienna1 = txtNrlekarza.getText(); 
-					}
-				});
-				txtNrlekarza.setHorizontalAlignment(SwingConstants.CENTER);
-				txtNrlekarza.setText("NR_Lekarza");
-				txtNrlekarza.setBounds(75, 13, 116, 22);
-				FrameLekarz.getContentPane().add(txtNrlekarza);
-				txtNrlekarza.setColumns(10);
-				
-				txtImieLekarza = new JTextField();
-				txtImieLekarza.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						zmiennaA = txtImieLekarza.getText(); 
-					}
-				});
-				txtImieLekarza.setHorizontalAlignment(SwingConstants.CENTER);
-				txtImieLekarza.setText("Imie");
-				txtImieLekarza.setBounds(75, 48, 116, 22);
-				FrameLekarz.getContentPane().add(txtImieLekarza);
-				txtImieLekarza.setColumns(10);
-				
-				txtNazwiskoLekarza = new JTextField();
-				txtNazwiskoLekarza.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						zmiennaB = txtNazwiskoLekarza.getText(); 
-					}
-				});
-				txtNazwiskoLekarza.setHorizontalAlignment(SwingConstants.CENTER);
-				txtNazwiskoLekarza.setText("Nazwisko");
-				txtNazwiskoLekarza.setBounds(75, 87, 116, 22);
-				FrameLekarz.getContentPane().add(txtNazwiskoLekarza);
-				txtNazwiskoLekarza.setColumns(10);
-				
-				txtTelefonLekarza = new JTextField();
-				txtTelefonLekarza.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						zmiennaC = txtTelefonLekarza.getText(); 
-					}
-				});
-				txtTelefonLekarza.setHorizontalAlignment(SwingConstants.CENTER);
-				txtTelefonLekarza.setText("Telefon");
-				txtTelefonLekarza.setBounds(75, 122, 116, 22);
-				FrameLekarz.getContentPane().add(txtTelefonLekarza);
-				txtTelefonLekarza.setColumns(10);
-				
-				JButton Dodaj_Lekarza = new JButton("Dodaj");
-				Dodaj_Lekarza.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-
-					}
-				});
-				Dodaj_Lekarza.setBounds(75, 176, 116, 25);
-				FrameLekarz.getContentPane().add(Dodaj_Lekarza);
+		JLabel lblWybierzTabel = new JLabel("WYBIERZ TABELĘ");
+		lblWybierzTabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblWybierzTabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWybierzTabel.setBounds(77, 26, 157, 31);
+		panel.add(lblWybierzTabel);
 		
-/*********************************************************************************/		
-		
-/*********************************************************************************/		
 		JPanel center_panel = new JPanel();
 		center_panel.setBounds(325, 0, 657, 552);
 		frame.getContentPane().add(center_panel);
