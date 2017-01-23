@@ -113,7 +113,7 @@ public class MainFrame {
 					break;
 				
 				case 1:
-					
+				//	try{
 					wykonawca.execute(new Runnable() {
 						public void run() {
 							JTable table = pobierzDaneDoTabeli1();
@@ -122,6 +122,9 @@ public class MainFrame {
 								scrollPane.setViewportView(table);
 						}	
 					});
+				/* }catch(SQLException error){
+					JOptionPane.showMessageDialog(null, error);
+				} */
 					break;
 				case 2:
 					wykonawca.execute(new Runnable() {
@@ -251,7 +254,7 @@ public class MainFrame {
 						lekarstwo lekarstwo = new lekarstwo();
 						lekarstwo.setVisible(true);
 						break;
-				/*	case 8:
+					case 8:
 						lek_leczy lek_leczy = new lek_leczy  ();
 						lek_leczy.setVisible(true);
 						break;
@@ -259,7 +262,7 @@ public class MainFrame {
 						inter_leku inter_leku = new inter_leku();
 						inter_leku.setVisible(true);
 						break;
-				*/
+				
 				}
 			}
 		});
@@ -317,8 +320,9 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());
+			//System.out.println(e.getMessage()+", State:"+e.getSQLState());
+			//e.printStackTrace();			    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -369,8 +373,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());		    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -422,8 +425,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());		    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -471,8 +473,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());		    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -522,8 +523,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());			    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -571,8 +571,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());			    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -621,8 +620,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());			    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -670,8 +668,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());		    		
 		} finally {
 			if (stmt != null)
 				try {
@@ -719,8 +716,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());			    		
 		} finally {
 			if (stmt != null)
 				try {
