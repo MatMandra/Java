@@ -216,7 +216,7 @@ public class MainFrame {
 		Szukaj.setBounds(12, 134, 147, 45);
 		panel.add(Szukaj);
 		
-		JButton btnDodajDane = new JButton("Dodaj Dane");
+		JButton btnDodajDane = new JButton("Edytuj Dane");
 		btnDodajDane.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnDodajDane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -21,6 +21,8 @@ import java.sql.Statement;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class lekarz extends JFrame {
 
@@ -86,19 +88,22 @@ public class lekarz extends JFrame {
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
-		JButton btnNewButton_2 = new JButton("ZAPISZ");
+		JButton btnNewButton_2 = new JButton("DODAJ");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dodajLekarz();
+					
 				
+
 			}
 		});
 		btnNewButton_2.setBounds(240, 208, 79, 22);
 		panel.add(btnNewButton_2);
 		
-		JButton btnNewButton = new JButton("ANULUJ");
+		JButton btnNewButton = new JButton("USUŃ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usunLekarz();
 				
 			}
 		});
@@ -125,6 +130,21 @@ public class lekarz extends JFrame {
 		lblNewLabel_3.setBounds(135, 33, 97, 16);
 		panel.add(lblNewLabel_3);
 		
+		JLabel lblAbyUsunPozycj = new JLabel("Aby Usunąć pozycję\r\n");
+		lblAbyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAbyUsunPozycj.setBounds(240, 135, 156, 22);
+		panel.add(lblAbyUsunPozycj);
+		
+		JLabel lblNewLabel_4 = new JLabel(" z bazy danych, wpisz ");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(240, 156, 158, 22);
+		panel.add(lblNewLabel_4);
+		
+		JLabel lblNrlekarzaIWcinij = new JLabel("NR_LEKARZA i wciśnij USUŃ");
+		lblNrlekarzaIWcinij.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNrlekarzaIWcinij.setBounds(229, 173, 201, 22);
+		panel.add(lblNrlekarzaIWcinij);
+		
 		initDbParams();
 		
 	}
@@ -138,8 +158,43 @@ public class lekarz extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, NAZWISKO, IMIE, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"',"+ "'"+textField_3.getText()+"')");
+			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, IMIE, NAZWISKO, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"',"+ "'"+textField_3.getText()+"')");
+			
+			}
+			catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());	
+				if (e == null) JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
+			} finally {
+				if (stmt != null)
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				if (connect != null)
+					try {
+						connect.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		}
 		
+	}
+	private void usunLekarz() { 
+
+		if (isDbReady) {
+			java.sql.Statement stmt = null;
+			Connection connect = null;
+			int Nr_Lekarza = Integer.parseInt(textField.getText());
+
+			try{
+			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
+			stmt = connect.createStatement();
+			stmt.executeUpdate("DELETE FROM LEKARZ WHERE NR_LEKARZA = "+Nr_Lekarza+"");
+			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());	
@@ -162,7 +217,6 @@ public class lekarz extends JFrame {
 		}
 		
 	}
-
 
 private void initDbParams() {
 	DbParams dbParams = new DbParams();

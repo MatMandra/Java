@@ -6,11 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class recepta extends JFrame {
@@ -21,6 +26,10 @@ public class recepta extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	private static final String PROPERTIES_PATH = "db/oracledb.properties";
+	private DbParams dbParams = null;
+	private boolean isDbReady = false;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -86,6 +95,91 @@ public class recepta extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(135, 33, 97, 16);
 		panel.add(lblNewLabel_3);
+		initDbParams();
+		
+	}
+	private void dodaRecepta() { 
+
+		if (isDbReady) {
+			java.sql.Statement stmt = null;
+			Connection connect = null;
+			int Nr_Lekarza = Integer.parseInt(textField.getText());
+
+			try{
+			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
+			stmt = connect.createStatement();
+			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, NAZWISKO, IMIE, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
+			}
+			catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());	
+			} finally {
+				if (stmt != null)
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				if (connect != null)
+					try {
+						connect.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		}
+		
+	}
+	private void usunRecepta() { 
+
+		if (isDbReady) {
+			java.sql.Statement stmt = null;
+			Connection connect = null;
+			int Nr_Lekarza = Integer.parseInt(textField.getText());
+
+			try{
+			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
+			stmt = connect.createStatement();
+			stmt.executeUpdate("DELETE FROM LEKARZ WHERE NR_LEKARZA = "+Nr_Lekarza+"");
+			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
+			}
+			catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());	
+			} finally {
+				if (stmt != null)
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				if (connect != null)
+					try {
+						connect.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		}
+		
 	}
 
+private void initDbParams() {
+	DbParams dbParams = new DbParams();
+	
+	try {
+		if (dbParams.loadParams(PROPERTIES_PATH)) {
+			if (Util.registerDbDriver(dbParams.getDriverUrl(),dbParams.getDriverClass())){
+				isDbReady=true;
+				this.dbParams = dbParams;
+			}
+			}
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
 }
