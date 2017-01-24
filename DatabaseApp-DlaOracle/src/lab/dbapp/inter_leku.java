@@ -72,14 +72,16 @@ public class inter_leku extends JFrame {
 		JButton btnNewButton_2 = new JButton("ZAPISZ");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dodajIL();
 			}
 		});
 		btnNewButton_2.setBounds(240, 208, 79, 22);
 		panel.add(btnNewButton_2);
 		
-		JButton btnNewButton = new JButton("ANULUJ");
+		JButton btnNewButton = new JButton("USUŃ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usunIL();
 			}
 		});
 		btnNewButton.setBounds(331, 208, 99, 22);
@@ -107,7 +109,7 @@ public class inter_leku extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, NAZWISKO, IMIE, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			stmt.executeUpdate("INSERT INTO WCHODZI_W_INTERAKCJE (LEKARSTWO_KOD, LEKARSTWO_KOD1) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -141,7 +143,7 @@ public class inter_leku extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM LEKARZ WHERE NR_LEKARZA = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM WCHODZI_W_INERAKCJE WHERE LEKARTWO_KOD  = "+Nr_Lekarza+" AND LEKARSTWO_KOD1 = "+textField_1.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

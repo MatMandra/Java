@@ -72,14 +72,16 @@ public class lek_leczy extends JFrame {
 		JButton btnNewButton_2 = new JButton("ZAPISZ");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dodajLL();
 			}
 		});
 		btnNewButton_2.setBounds(240, 208, 79, 22);
 		panel.add(btnNewButton_2);
 		
-		JButton btnNewButton = new JButton("ANULUJ");
+		JButton btnNewButton = new JButton("USUŃ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usunLL();
 			}
 		});
 		btnNewButton.setBounds(331, 208, 99, 22);
@@ -103,11 +105,11 @@ public class lek_leczy extends JFrame {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
 			int Nr_Lekarza = Integer.parseInt(textField.getText());
-
+			int choroba = Integer.parseInt(textField_1.getText());
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, NAZWISKO, IMIE, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			stmt.executeUpdate("INSERT INTO LECZY (LEKARSTWO_KOD, CHOROBA_NR_CHOROBY ) " + " VALUES ('"+Nr_Lekarza+"','"+choroba+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -137,11 +139,11 @@ public class lek_leczy extends JFrame {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
 			int Nr_Lekarza = Integer.parseInt(textField.getText());
-
+			int choroba = Integer.parseInt(textField_1.getText());
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM LEKARZ WHERE NR_LEKARZA = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM LECZY WHERE LEKARSTWO_KOD  = "+Nr_Lekarza+" AND CHOROBA_NR_CHOROBY = "+choroba+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

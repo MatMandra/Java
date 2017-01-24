@@ -159,11 +159,10 @@ public class lekarz extends JFrame {
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
 			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, IMIE, NAZWISKO, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"',"+ "'"+textField_3.getText()+"')");
-			
+			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());	
-				if (e == null) JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			} finally {
 				if (stmt != null)
 					try {

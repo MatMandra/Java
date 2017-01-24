@@ -82,9 +82,10 @@ public class wizyta extends JFrame {
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
-		JButton btnNewButton = new JButton("ZAPISZ");
+		JButton btnNewButton = new JButton("DODAJ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dodajWizyta();
 			}
 		});
 		btnNewButton.setBounds(331, 173, 99, 22);
@@ -120,9 +121,10 @@ public class wizyta extends JFrame {
 		lblNewLabel_4.setBounds(135, 138, 122, 16);
 		panel.add(lblNewLabel_4);
 		
-		JButton btnNewButton_1 = new JButton("ANULUJ\r\n");
+		JButton btnNewButton_1 = new JButton("USUŃ\r\n");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usunWizyta();
 			}
 		});
 		btnNewButton_1.setBounds(331, 208, 99, 22);
@@ -150,7 +152,7 @@ public class wizyta extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, NAZWISKO, IMIE, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"',"+ "'"+textField_3.getText()+"')");
+			stmt.executeUpdate("INSERT INTO WIZYTA (NR_WIZYTY, DATA_WIZYTY, OBJAWY, NOTATKI, LEKARZ_NR_LEKARZA, PACJENT_NR_UBEZPIECZENIA) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"','"+textField_4.getText()+"','"+textField_5.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -184,7 +186,7 @@ public class wizyta extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM LEKARZ WHERE NR_LEKARZA = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM WIZYTA WHERE NR_WIZYTY = "+Nr_Lekarza+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

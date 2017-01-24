@@ -81,9 +81,10 @@ public class pacjent extends JFrame {
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
-		JButton btnNewButton = new JButton("ZAPISZ");
+		JButton btnNewButton = new JButton("DODAJ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dodajPacjent();
 			}
 		});
 		btnNewButton.setBounds(240, 208, 79, 22);
@@ -119,9 +120,10 @@ public class pacjent extends JFrame {
 		lblNewLabel_4.setBounds(135, 138, 97, 16);
 		panel.add(lblNewLabel_4);
 		
-		JButton btnNewButton_1 = new JButton("ANULUJ\r\n");
+		JButton btnNewButton_1 = new JButton("USUŃ");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usunP();
 			}
 		});
 		btnNewButton_1.setBounds(331, 208, 99, 22);
@@ -134,12 +136,12 @@ public class pacjent extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			int Nr_Unikat = Integer.parseInt(textField.getText());
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO LEKARZ (NR_LEKARZA, NAZWISKO, IMIE, TELEFON) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"',"+ "'"+textField_3.getText()+"')");
+			stmt.executeUpdate("INSERT INTO PACJENT(NR_UBEZPIECZENIA, NAZWISKO, IMIE, ADRES, TELEFON) " + " VALUES ('"+Nr_Unikat+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"','"+textField_4.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -163,17 +165,17 @@ public class pacjent extends JFrame {
 		}
 		
 	}
-	private void usunPacjent() { 
+	private void usunP() { 
 
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			int Nr_Unikat = Integer.parseInt(textField.getText());
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM LEKARZ WHERE NR_LEKARZA = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM PACJENT WHERE NR_UBEZPIECZENIA = "+Nr_Unikat+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

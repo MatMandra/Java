@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
 
 public class MainFrame {
 
-	private JFrame frame;
+	private JFrame frmDbOracleAp;
 	private JScrollPane scrollPane;
 	
 	private static final String PROPERTIES_PATH = "db/oracledb.properties";
@@ -48,7 +48,7 @@ public class MainFrame {
 			public void run() {
 				try {
 					MainFrame window = new MainFrame();
-					window.frame.setVisible(true);
+					window.frmDbOracleAp.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,14 +67,15 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1000, 599);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmDbOracleAp = new JFrame();
+		frmDbOracleAp.setTitle("DB Oracle AP 0.0.1v");
+		frmDbOracleAp.setBounds(100, 100, 1000, 599);
+		frmDbOracleAp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDbOracleAp.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 323, 552);
-		frame.getContentPane().add(panel);
+		frmDbOracleAp.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JComboBox Wybierz_tab = new JComboBox();
@@ -278,7 +279,7 @@ public class MainFrame {
 		
 		JPanel center_panel = new JPanel();
 		center_panel.setBounds(325, 0, 657, 552);
-		frame.getContentPane().add(center_panel);
+		frmDbOracleAp.getContentPane().add(center_panel);
 		center_panel.setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
