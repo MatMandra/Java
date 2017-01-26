@@ -50,6 +50,7 @@ public class choroba extends JFrame {
 	 * Create the frame.
 	 */
 	public choroba() {
+		setTitle("Choroba");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 300);
 		contentPane = new JPanel();
@@ -119,6 +120,11 @@ public class choroba extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(135, 33, 97, 16);
 		panel.add(lblNewLabel_3);
+		
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_CHOROBY i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, w pierwszej kolejności należy usunąć przypisane do choroby DIAGNOZY i LEKARSTWO_LECZY</html> ");
+		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
+		lblabyUsunPozycj.setBounds(240, 13, 202, 167);
+		panel.add(lblabyUsunPozycj);
 		initDbParams();
 		
 	}

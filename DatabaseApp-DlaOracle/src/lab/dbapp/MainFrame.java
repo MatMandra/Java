@@ -68,7 +68,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frmDbOracleAp = new JFrame();
-		frmDbOracleAp.setTitle("DB Oracle AP 0.0.1v");
+		frmDbOracleAp.setTitle("DB Oracle AP 0.0.10v");
 		frmDbOracleAp.setBounds(100, 100, 1000, 599);
 		frmDbOracleAp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDbOracleAp.getContentPane().setLayout(null);
@@ -276,6 +276,13 @@ public class MainFrame {
 		lblWybierzTabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWybierzTabel.setBounds(77, 26, 157, 31);
 		panel.add(lblWybierzTabel);
+		
+		JLabel lblabyPrzegldaZawarto = new JLabel("<html>Aby przeglądać zawartoś bazy danych <br>WYBIERZ TABELĘ<br> następnie wciśnij <br>WYSZUKAJ DANE. <br>Aby dodać lub usunąć pozycję, <br>wybierz odpowiednią tabelę <br>następnie wciśnij <br>EDYTUJ DANE<br> <html>");
+		lblabyPrzegldaZawarto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblabyPrzegldaZawarto.setVerticalAlignment(SwingConstants.TOP);
+		lblabyPrzegldaZawarto.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblabyPrzegldaZawarto.setBounds(12, 214, 299, 325);
+		panel.add(lblabyPrzegldaZawarto);
 		
 		JPanel center_panel = new JPanel();
 		center_panel.setBounds(325, 0, 657, 552);

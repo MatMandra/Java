@@ -48,6 +48,7 @@ public class inter_leku extends JFrame {
 	 * Create the frame.
 	 */
 	public inter_leku() {
+		setTitle("LekarstwoA w interakcji z lekarstwemB ");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 300);
 		contentPane = new JPanel();
@@ -69,7 +70,7 @@ public class inter_leku extends JFrame {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton_2 = new JButton("ZAPISZ");
+		JButton btnNewButton_2 = new JButton("DODAJ");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dodajIL();
@@ -96,6 +97,11 @@ public class inter_leku extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(135, 33, 127, 16);
 		panel.add(lblNewLabel_3);
+		
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz <br>KOD LEK_A oraz KOD LEK_B<br> <html>");
+		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
+		lblabyUsunPozycj.setBounds(250, 15, 180, 85);
+		panel.add(lblabyUsunPozycj);
 		initDbParams();
 		
 	}
@@ -143,7 +149,7 @@ public class inter_leku extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM WCHODZI_W_INERAKCJE WHERE LEKARTWO_KOD  = "+Nr_Lekarza+" AND LEKARSTWO_KOD1 = "+textField_1.getText()+"");
+			stmt.executeUpdate("DELETE FROM WCHODZI_W_INTERAKCJE WHERE LEKARSTWO_KOD  = "+Nr_Lekarza+" AND LEKARSTWO_KOD1  = "+textField_1.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

@@ -48,6 +48,7 @@ public class diagnoza extends JFrame {
 	 * Create the frame.
 	 */
 	public diagnoza() {
+		setTitle("Diagnoza");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 301);
 		contentPane = new JPanel();
@@ -96,6 +97,11 @@ public class diagnoza extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(135, 33, 127, 16);
 		panel.add(lblNewLabel_3);
+		
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_WIZYTY i wciśnij USUŃ<br> ");
+		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
+		lblabyUsunPozycj.setBounds(262, 13, 180, 85);
+		panel.add(lblabyUsunPozycj);
 		initDbParams();
 		
 	}

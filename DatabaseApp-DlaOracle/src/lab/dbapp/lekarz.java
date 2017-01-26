@@ -57,6 +57,7 @@ public class lekarz extends JFrame {
 	 * Create the frame.
 	 */
 	public lekarz() {
+		setTitle("Lekarz");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 300);
 		contentPane = new JPanel();
@@ -69,6 +70,7 @@ public class lekarz extends JFrame {
 		panel.setLayout(null);
 		
 		textField = new JTextField();
+		textField.setToolTipText("");
 		textField.setBounds(0, 30, 116, 22);
 		panel.add(textField);
 		textField.setColumns(10);
@@ -130,20 +132,10 @@ public class lekarz extends JFrame {
 		lblNewLabel_3.setBounds(135, 33, 97, 16);
 		panel.add(lblNewLabel_3);
 		
-		JLabel lblAbyUsunPozycj = new JLabel("Aby Usunąć pozycję\r\n");
+		JLabel lblAbyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_LEKARZ i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, nalerzy w pierwszej kolejności usunąć przypisane do lekarza WIZYTY </html> ");
 		lblAbyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAbyUsunPozycj.setBounds(240, 135, 156, 22);
+		lblAbyUsunPozycj.setBounds(252, 13, 190, 138);
 		panel.add(lblAbyUsunPozycj);
-		
-		JLabel lblNewLabel_4 = new JLabel(" z bazy danych, wpisz ");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(240, 156, 158, 22);
-		panel.add(lblNewLabel_4);
-		
-		JLabel lblNrlekarzaIWcinij = new JLabel("NR_LEKARZA i wciśnij USUŃ");
-		lblNrlekarzaIWcinij.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNrlekarzaIWcinij.setBounds(229, 173, 201, 22);
-		panel.add(lblNrlekarzaIWcinij);
 		
 		initDbParams();
 		

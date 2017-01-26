@@ -47,6 +47,7 @@ public class lekarstwo extends JFrame {
 	 * Create the frame.
 	 */
 	public lekarstwo() {
+		setTitle("Lekarstwo");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 300);
 		contentPane = new JPanel();
@@ -68,7 +69,7 @@ public class lekarstwo extends JFrame {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton_2 = new JButton("ZAPISZ");
+		JButton btnNewButton_2 = new JButton("DODAJ");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dodajLekarstwo(); 
@@ -95,6 +96,11 @@ public class lekarstwo extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(135, 33, 97, 16);
 		panel.add(lblNewLabel_3);
+		
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz KOD LEKU i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, nalerzy w pierwszej kolejności usunąć przypisane do Leku LEKARSTWO_LECZY INTERAKCJE_LEKÓW oraz RECEPTY</html> ");
+		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
+		lblabyUsunPozycj.setBounds(262, 13, 180, 182);
+		panel.add(lblabyUsunPozycj);
 		initDbParams();
 		
 	}

@@ -48,6 +48,7 @@ public class lek_leczy extends JFrame {
 	 * Create the frame.
 	 */
 	public lek_leczy() {
+		setTitle("Lekarstwo leczy chorobę");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 300);
 		contentPane = new JPanel();
@@ -69,7 +70,7 @@ public class lek_leczy extends JFrame {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton_2 = new JButton("ZAPISZ");
+		JButton btnNewButton_2 = new JButton("DODAJ");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dodajLL();
@@ -96,6 +97,11 @@ public class lek_leczy extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(135, 33, 116, 16);
 		panel.add(lblNewLabel_3);
+		
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz KOD LEKARSTWA oraz NR_CHOROBY<br> <html>");
+		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
+		lblabyUsunPozycj.setBounds(262, 13, 180, 99);
+		panel.add(lblabyUsunPozycj);
 		initDbParams();
 		
 	}
