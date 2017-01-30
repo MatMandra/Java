@@ -141,7 +141,7 @@ public class wizyta extends JFrame {
 		lblNrpacjenta.setBounds(135, 211, 122, 16);
 		panel.add(lblNrpacjenta);
 		
-		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_WIZYTY i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, nalerzy w pierwszej kolejności usunąć przypisane do wizyty DIAGNOZY oraz RECEPTY</html> ");
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_WIZYTY i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, należy w pierwszej kolejności usunąć przypisane do wizyty DIAGNOZY oraz RECEPTY</html> ");
 		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
 		lblabyUsunPozycj.setBounds(262, 0, 180, 157);
 		panel.add(lblabyUsunPozycj);

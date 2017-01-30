@@ -21,8 +21,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -114,7 +112,6 @@ public class MainFrame {
 					break;
 				
 				case 1:
-				//	try{
 					wykonawca.execute(new Runnable() {
 						public void run() {
 							JTable table = pobierzDaneDoTabeli1();
@@ -123,9 +120,7 @@ public class MainFrame {
 								scrollPane.setViewportView(table);
 						}	
 					});
-				/* }catch(SQLException error){
-					JOptionPane.showMessageDialog(null, error);
-				} */
+
 					break;
 				case 2:
 					wykonawca.execute(new Runnable() {
@@ -328,9 +323,7 @@ public class MainFrame {
 				tabela.setModel(modelTabeli);
 			}
 		}catch (SQLException e){
-			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());
-			//System.out.println(e.getMessage()+", State:"+e.getSQLState());
-			//e.printStackTrace();			    		
+			JOptionPane.showMessageDialog(null, e.getMessage()+", State:"+e.getSQLState());		    		
 		} finally {
 			if (stmt != null)
 				try {

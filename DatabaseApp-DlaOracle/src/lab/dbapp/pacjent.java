@@ -130,7 +130,7 @@ public class pacjent extends JFrame {
 		btnNewButton_1.setBounds(331, 208, 99, 22);
 		panel.add(btnNewButton_1);
 		
-		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_UBEZPIECZENIA i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, nalerzy w pierwszej kolejności usunąć przypisane do Pacjenta WIZYTY </html> ");
+		JLabel lblabyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_UBEZPIECZENIA i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, należy w pierwszej kolejności usunąć przypisane do Pacjenta WIZYTY </html> ");
 		lblabyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
 		lblabyUsunPozycj.setBounds(258, 16, 184, 162);
 		panel.add(lblabyUsunPozycj);

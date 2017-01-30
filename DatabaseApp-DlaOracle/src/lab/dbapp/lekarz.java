@@ -15,14 +15,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class lekarz extends JFrame {
 
@@ -132,7 +126,7 @@ public class lekarz extends JFrame {
 		lblNewLabel_3.setBounds(135, 33, 97, 16);
 		panel.add(lblNewLabel_3);
 		
-		JLabel lblAbyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_LEKARZ i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, nalerzy w pierwszej kolejności usunąć przypisane do lekarza WIZYTY </html> ");
+		JLabel lblAbyUsunPozycj = new JLabel("<html>Aby Usunąć pozycję z bazy danych, wpisz NR_LEKARZ i wciśnij USUŃ<br> Aby operacja przebiegła pomyślnie, należy w pierwszej kolejności usunąć przypisane do lekarza WIZYTY </html> ");
 		lblAbyUsunPozycj.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAbyUsunPozycj.setBounds(252, 13, 190, 138);
 		panel.add(lblAbyUsunPozycj);
