@@ -142,12 +142,12 @@ public class pacjent extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Unikat = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO PACJENT(NR_UBEZPIECZENIA, NAZWISKO, IMIE, ADRES, TELEFON) " + " VALUES ('"+Nr_Unikat+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"','"+textField_4.getText()+"')");
+			stmt.executeUpdate("INSERT INTO PACJENT(NR_UBEZPIECZENIA, NAZWISKO, IMIE, ADRES, TELEFON) " + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"','"+textField_4.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -176,12 +176,12 @@ public class pacjent extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Unikat = Integer.parseInt(textField.getText());
+		
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM PACJENT WHERE NR_UBEZPIECZENIA = "+Nr_Unikat+"");
+			stmt.executeUpdate("DELETE FROM PACJENT WHERE NR_UBEZPIECZENIA = "+textField.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

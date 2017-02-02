@@ -133,12 +133,12 @@ public class choroba extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO CHOROBA (NR_CHOROBY, NAZWA, OPIS, OBJAWY) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"')");
+			stmt.executeUpdate("INSERT INTO CHOROBA (NR_CHOROBY, NAZWA, OPIS, OBJAWY) " + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -167,12 +167,12 @@ public class choroba extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM CHOROBA WHERE NR_CHOROBY = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM CHOROBA WHERE NR_CHOROBY = "+textField.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

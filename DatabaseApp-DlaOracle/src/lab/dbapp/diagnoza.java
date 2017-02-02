@@ -110,12 +110,12 @@ public class diagnoza extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO DIAGNOZA (WIZYTA_NR_WIZYTY, CHOROBA_NR_CHOROBY) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			stmt.executeUpdate("INSERT INTO DIAGNOZA (WIZYTA_NR_WIZYTY, CHOROBA_NR_CHOROBY) " + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -144,12 +144,12 @@ public class diagnoza extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM DIAGNOZA WHERE WIZYTA_NR_WIZYTY = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM DIAGNOZA WHERE WIZYTA_NR_WIZYTY = "+textField.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

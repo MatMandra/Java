@@ -110,12 +110,12 @@ public class inter_leku extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO WCHODZI_W_INTERAKCJE (LEKARSTWO_KOD, LEKARSTWO_KOD1) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			stmt.executeUpdate("INSERT INTO WCHODZI_W_INTERAKCJE (LEKARSTWO_KOD, LEKARSTWO_KOD1) " + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -144,12 +144,12 @@ public class inter_leku extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM WCHODZI_W_INTERAKCJE WHERE LEKARSTWO_KOD  = "+Nr_Lekarza+" AND LEKARSTWO_KOD1  = "+textField_1.getText()+"");
+			stmt.executeUpdate("DELETE FROM WCHODZI_W_INTERAKCJE WHERE LEKARSTWO_KOD  = "+textField.getText()+" AND LEKARSTWO_KOD1  = "+textField_1.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

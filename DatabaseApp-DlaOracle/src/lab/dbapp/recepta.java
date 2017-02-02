@@ -112,12 +112,12 @@ public class recepta extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+		
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO RECEPTA (WIZYTA_NR_WIZYTY, LEKARSTWO_KOD)" + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			stmt.executeUpdate("INSERT INTO RECEPTA (WIZYTA_NR_WIZYTY, LEKARSTWO_KOD)" + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -146,12 +146,12 @@ public class recepta extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM RECEPTA WHERE WIZYTA_NR_WIZYTY = "+Nr_Lekarza+" AND LEKARSTWO_KOD = "+textField_1.getText()+"");
+			stmt.executeUpdate("DELETE FROM RECEPTA WHERE WIZYTA_NR_WIZYTY = "+textField.getText()+" AND LEKARSTWO_KOD = "+textField_1.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

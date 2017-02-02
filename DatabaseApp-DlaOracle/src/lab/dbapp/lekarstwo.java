@@ -109,12 +109,12 @@ public class lekarstwo extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO LEKARSTWO (KOD, NAZWA) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"')");
+			stmt.executeUpdate("INSERT INTO LEKARSTWO (KOD, NAZWA) " + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -148,7 +148,7 @@ public class lekarstwo extends JFrame {
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM LEKARSTWO WHERE KOD = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM LEKARSTWO WHERE KOD = "+textField.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {

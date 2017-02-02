@@ -40,7 +40,9 @@ public class MainFrame {
 	/**
 	 * Launch the application.
 	 */
+	
 	public int WybranaTabelka = 0;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,6 +50,7 @@ public class MainFrame {
 					MainFrame window = new MainFrame();
 					window.frmDbOracleAp.setVisible(true);
 				} catch (Exception e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -66,7 +69,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frmDbOracleAp = new JFrame();
-		frmDbOracleAp.setTitle("DB Oracle AP 0.0.10v");
+		frmDbOracleAp.setTitle("DB Oracle AP 0.0.11v");
 		frmDbOracleAp.setBounds(100, 100, 1000, 599);
 		frmDbOracleAp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDbOracleAp.getContentPane().setLayout(null);
@@ -93,7 +96,7 @@ public class MainFrame {
 		Wybierz_tab.setBounds(77, 57, 157, 45);
 		panel.add(Wybierz_tab);
 		
-		JButton Szukaj = new JButton("Wyszukaj Dane");
+		JButton Szukaj = new JButton("Pobierz Dane");
 		Szukaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				switch(WybranaTabelka) {
@@ -212,7 +215,7 @@ public class MainFrame {
 		Szukaj.setBounds(12, 134, 147, 45);
 		panel.add(Szukaj);
 		
-		JButton btnDodajDane = new JButton("Edytuj Dane");
+		JButton btnDodajDane = new JButton("Dodaj lub Usuń");
 		btnDodajDane.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnDodajDane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -342,6 +345,7 @@ public class MainFrame {
 		}
 	}
 		return tabela;
+		
 }
 	private JTable pobierzDaneDoTabeli2() {
 		JTable tabela = null ;

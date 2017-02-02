@@ -153,12 +153,12 @@ public class wizyta extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
+			
 
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("INSERT INTO WIZYTA (NR_WIZYTY, DATA_WIZYTY, OBJAWY, NOTATKI, LEKARZ_NR_LEKARZA, PACJENT_NR_UBEZPIECZENIA) " + " VALUES ('"+Nr_Lekarza+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"','"+textField_4.getText()+"','"+textField_5.getText()+"')");
+			stmt.executeUpdate("INSERT INTO WIZYTA (NR_WIZYTY, DATA_WIZYTY, OBJAWY, NOTATKI, LEKARZ_NR_LEKARZA, PACJENT_NR_UBEZPIECZENIA) " + " VALUES ('"+textField.getText()+"','"+textField_1.getText()+"','"+textField_2.getText()+"','"+textField_3.getText()+"','"+textField_4.getText()+"','"+textField_5.getText()+"')");
 			JOptionPane.showMessageDialog(null, "Dodano Pomyślnie");
 			}
 			catch (SQLException e) {
@@ -187,12 +187,11 @@ public class wizyta extends JFrame {
 		if (isDbReady) {
 			java.sql.Statement stmt = null;
 			Connection connect = null;
-			int Nr_Lekarza = Integer.parseInt(textField.getText());
-
+			
 			try{
 			connect = DriverManager.getConnection(dbParams.getDbUrl(), dbParams.getDbUser(), dbParams.getDbPassword());
 			stmt = connect.createStatement();
-			stmt.executeUpdate("DELETE FROM WIZYTA WHERE NR_WIZYTY = "+Nr_Lekarza+"");
+			stmt.executeUpdate("DELETE FROM WIZYTA WHERE NR_WIZYTY = "+textField.getText()+"");
 			JOptionPane.showMessageDialog(null, "Usunięto Pomyślnie");	
 			}
 			catch (SQLException e) {
